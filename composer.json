@@ -1,0 +1,35 @@
+{
+    "name": "indigophp/cart-extensions",
+    "description": "Extensions for Indigo Cart",
+    "license": "MIT",
+    "keywords": ["shopping", "cart"],
+    "homepage": "https://indigophp.com",
+    "authors": [
+        {
+            "name": "Márk Sági-Kazár",
+            "email": "mark.sagikazar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "indigophp/cart": "dev-develop"
+    },
+    "suggest": {
+        "sebastian/money": "Value Object that represents a monetary value using a currency's smallest unit."
+    },
+    "require-dev": {
+        "sebastian/money": "dev-master",
+        "mockery/mockery": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Indigo\\Cart\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Cart\\Test\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}

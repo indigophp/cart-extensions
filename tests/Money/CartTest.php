@@ -27,7 +27,7 @@ class CartTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->currency = new Currency('EUR');
-        $this->cart = new Cart('cart_01', $this->currency);
+        $this->cart = new Cart($this->currency, 'cart_01');
 
         $this->item = new Item(
             array(
@@ -50,13 +50,11 @@ class CartTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::getCurrency
-     * @covers ::setCurrency
      * @group  Cart
      */
     public function testCurrency()
     {
         $this->assertSame($this->currency, $this->cart->getCurrency());
-        $this->assertSame($this->cart, $this->cart->setCurrency($this->currency));
     }
 
     /**

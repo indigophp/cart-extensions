@@ -12,12 +12,10 @@
 namespace Indigo\Cart\Money;
 
 use Indigo;
-use Indigo\Cart\ItemInterface;
 use Indigo\Container\Collection;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
-use SebastianBergmann\Money\CurrencyMismatchException;
 
 /**
  * Money Cart class
@@ -40,7 +38,7 @@ class Cart extends Indigo\Cart\Cart
     /**
      * @codeCoverageIgnore
      */
-    public function __construct($id = null, Currency $currency = null)
+    public function __construct(Currency $currency, $id = null)
     {
         $this->id = $id;
         $this->currency = $currency;
@@ -56,19 +54,6 @@ class Cart extends Indigo\Cart\Cart
     public function getCurrency()
     {
         return $this->currency;
-    }
-
-    /**
-     * Set Currency
-     *
-     * @param  Currency $currency
-     * @return Cart
-     */
-    public function setCurrency(Currency $currency)
-    {
-        $this->currency = $currency;
-
-        return $this;
     }
 
     /**

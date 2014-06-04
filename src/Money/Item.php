@@ -58,7 +58,7 @@ class Item extends Indigo\Cart\Item
     {
         $price = $this->price;
 
-        if ($option and isset($this->data['option'])) {
+        if ($option and isset($this->option)) {
             $option = $this->option->getValue($price);
 
             $price = $price->add($option);

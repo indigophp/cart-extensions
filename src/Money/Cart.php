@@ -11,13 +11,13 @@
 
 namespace Indigo\Cart\Money;
 
+use Indigo;
 use Indigo\Cart\ItemInterface;
 use Indigo\Container\Collection;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
 use SebastianBergmann\Money\CurrencyMismatchException;
-use InvalidArgumentException;
 
 /**
  * Money Cart class
@@ -26,7 +26,7 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Cart extends \Indigo\Cart\Cart
+class Cart extends Indigo\Cart\Cart
 {
     /**
      * Currency of cart

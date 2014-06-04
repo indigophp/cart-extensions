@@ -18,8 +18,7 @@
         "sebastian/money": "Value Object that represents a monetary value using a currency's smallest unit."
     },
     "require-dev": {
-        "sebastian/money": "dev-master",
-        "mockery/mockery": "dev-master@dev"
+        "sebastian/money": "dev-master"
     },
     "autoload": {
         "psr-4": {

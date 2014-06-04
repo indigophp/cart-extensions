@@ -11,9 +11,9 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo;
+use Indigo\Container\Struct;
 use SebastianBergmann\Money\Money;
-use InvalidArgumentException;
+use Serializable;
 
 /**
  * Money Cart Item Option class
@@ -22,8 +22,11 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Option extends Indigo\Cart\Option\Option implements OptionInterface
+class Option extends Struct implements OptionInterface, Serializable
 {
+    use \Indigo\Container\Helper\Id;
+    use \Indigo\Container\Helper\Serializable;
+
     /**
      * {@inheritdocs}
      */
@@ -43,12 +46,8 @@ class Option extends Indigo\Cart\Option\Option implements OptionInterface
     /**
      * {@inheritdocs}
      */
-    public function getValue($price)
+    public function getValue(Money $price)
     {
-        if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
-        }
-
-        return parent::getValue($price);
+        return $this->value;
     }
 }

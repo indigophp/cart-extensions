@@ -19,14 +19,4 @@ abstract class AbstractOptionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(200, $this->option->getValue(new Money(100, new Currency('EUR')))->getAmount());
     }
-
-    /**
-     * @covers            ::getValue
-     * @expectedException InvalidArgumentException
-     * @group             Cart
-     */
-    public function testValueFailure()
-    {
-        $this->option->getValue(null);
-    }
 }

@@ -11,7 +11,6 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo;
 use SebastianBergmann\Money\Money;
 
 /**
@@ -19,7 +18,7 @@ use SebastianBergmann\Money\Money;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface OptionInterface extends Indigo\Cart\Option\OptionInterface
+interface OptionInterface
 {
     /**
      * Return the value of the option
@@ -27,5 +26,5 @@ interface OptionInterface extends Indigo\Cart\Option\OptionInterface
      * @param  Money $price Price the calculation depends on
      * @return Money
      */
-    public function getValue($price);
+    public function getValue(Money $price);
 }

@@ -11,26 +11,28 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo;
 use Indigo\Container\Collection as CollectionContainer;
-use Indigo\Cart\Option\OptionInterface as OriginalOptionInterface;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
-use InvalidArgumentException;
+use Serializable;
 
 /**
  * Option collection class
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Collection extends Indigo\Cart\Option\Collection implements OptionInterface
+class Collection extends CollectionContainer implements OptionInterface, Serializable
 {
+    use \Indigo\Container\Helper\Id;
+    use \Indigo\Container\Helper\Insert;
+    use \Indigo\Container\Helper\Serializable;
+
     /**
      * @codeCoverageIgnore
      */
     public function __construct(array $data = array(), $readOnly = false)
     {
-        CollectionContainer::__construct(new Type('Indigo\\Cart\\Money\\Option\\OptionInterface'), array(), $readOnly);
+        parent::__construct(new Type('Indigo\\Cart\\Money\\Option\\OptionInterface'), array(), $readOnly);
 
         foreach ($data as $value) {
             $this->add($value);
@@ -38,26 +40,35 @@ class Collection extends Indigo\Cart\Option\Collection implements OptionInterfac
     }
 
     /**
-     * {@inheritdocs}
+     * Add option to collection
+     *
+     * @param  OptionInterface $option
+     * @param  int|null        $pos    Position to insert at
+     * @return Collection
      */
-    public function add(OriginalOptionInterface $option, $pos = null)
+    public function add(OptionInterface $option, $pos = null)
     {
-        if ($option instanceof OptionInterface === false) {
-            throw new InvalidArgumentException('$option should be an instance of Indigo\\Cart\\Money\\Option\\OptionInterface');
+        $id = $option->getId();
+
+        if ($this->has($id) === false) {
+            // Set parent, but disable the usage
+            // Set option to read-only
+            $option
+                ->setParent($this)
+                ->disableParent()
+                ->setReadOnly();
+
+            $this->insertAssoc($id, $option, $pos);
         }
 
-        return parent::add($option, $pos);
+        return $this;
     }
 
     /**
      * {@inheritdocs}
      */
-    public function getValue($price)
+    public function getValue(Money $price)
     {
-        if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
-        }
-
         $total = new Money(0, $price->getCurrency());
 
         foreach ($this->data as $option) {
@@ -76,12 +87,8 @@ class Collection extends Indigo\Cart\Option\Collection implements OptionInterfac
      * @param  boolean $filter If false, the given types will be filtered out
      * @return float
      */
-    public function getValueOfType($price, Type $type, $filter = true)
+    public function getValueOfType(Money $price, Type $type, $filter = true)
     {
-        if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
-        }
-
         $total = new Money(0, $price->getCurrency());
 
         foreach ($this->data as $option) {

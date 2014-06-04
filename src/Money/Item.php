@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Indigo Cart package.
+ * This file is part of the Indigo Cart Extensions package.
  *
  * (c) Indigo Development Team
  *
@@ -11,7 +11,7 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo\Cart;
+use Indigo;
 use SebastianBergmann\Money\Money;
 
 /**
@@ -21,7 +21,7 @@ use SebastianBergmann\Money\Money;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Item extends Cart\Item
+class Item extends Indigo\Cart\Item
 {
     /**
      * {@inheritdocs}
@@ -45,7 +45,7 @@ class Item extends Cart\Item
             'numericMin' => 1,
         ),
         'option' => array(
-            'type' => 'Indigo\\Cart\\Money\\OptionInterface'
+            'type' => 'Indigo\\Cart\\Money\\Option\\OptionInterface'
         ),
     );
 

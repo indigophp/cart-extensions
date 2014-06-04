@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Indigo Cart package.
+ * This file is part of the Indigo Cart Extensions package.
  *
  * (c) Indigo Development Team
  *
@@ -11,11 +11,13 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo\Cart;
+use Indigo\Cart\ItemInterface;
 use Indigo\Container\Collection;
+use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
 use SebastianBergmann\Money\CurrencyMismatchException;
+use InvalidArgumentException;
 
 /**
  * Money Cart class
@@ -24,18 +26,24 @@ use SebastianBergmann\Money\CurrencyMismatchException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Cart extends Cart\Cart
+class Cart extends \Indigo\Cart\Cart
 {
     /**
      * Currency of cart
+     *
+     * Currency should be consistent in the same cart
      *
      * @var Currency
      */
     protected $currency;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct($id = null, Currency $currency = null)
     {
         $this->id = $id;
+        $this->currency = $currency;
 
         Collection::__construct(new Type('Indigo\\Cart\\Money\\Item'));
     }
@@ -70,8 +78,8 @@ class Cart extends Cart\Cart
      */
     public function add(ItemInterface $item)
     {
-        if ($item instanceof Item) {
-            throw new InvalidArgumentException('');
+        if ($item instanceof Item === false) {
+            throw new InvalidArgumentException('$item should be an instance of Indigo\\Cart\\Money\\Item');
         }
 
         $currency = $item['price']->getCurrency();
@@ -97,7 +105,7 @@ class Cart extends Cart\Cart
         foreach ($this->data as $id => $item) {
             $subtotal = $item->getSubtotal($options);
 
-            $total->add($subtotal);
+            $total = $total->add($subtotal);
         }
 
         return $total;

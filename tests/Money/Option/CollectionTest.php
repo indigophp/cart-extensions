@@ -35,29 +35,21 @@ class CollectionTest extends AbstractOptionTest
     }
 
     /**
-     * @covers ::add
-     * @group  Cart
-     */
-    public function testAdd()
-    {
-        $option = $this->mock;
-
-        $this->option->setContents(array());
-        $id = $option->getId();
-
-        $this->assertFalse($this->option->has($id));
-
-        $this->option->add($option);
-
-        $this->assertTrue($this->option->has($id));
-    }
-
-    /**
      * @covers ::getValueOfType
      * @group  Cart
      */
     public function testValueOfType()
     {
-        $this->assertEquals(200, $this->option->getValueOfType(new Money(100, new Currency('EUR')), new Type('Indigo\\Cart\\Money\\Option\\OptionInterface'))->getAmount());
+        $this->assertEquals(200, $this->option->getValueOfType(new Money(100, new Currency('EUR')), new Type('Indigo\\Cart\\Option\\OptionInterface'))->getAmount());
+    }
+
+    /**
+     * @covers            ::getValueOfType
+     * @expectedException InvalidArgumentException
+     * @group             Cart
+     */
+    public function testValueOfTypeFailure()
+    {
+        $this->option->getValueOfType(null, new Type('Indigo\\Cart\\Option\\OptionInterface'));
     }
 }

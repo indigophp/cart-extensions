@@ -11,7 +11,7 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo;
+use Indigo\Cart\Cart as ParentCart;
 use Indigo\Container\Collection;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
@@ -24,7 +24,7 @@ use SebastianBergmann\Money\Currency;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Cart extends Indigo\Cart\Cart
+class Cart extends ParentCart
 {
     /**
      * Currency of cart

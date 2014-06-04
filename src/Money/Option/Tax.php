@@ -11,23 +11,19 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo\Cart\Option\TaxInterface;
-use Indigo\Container\Struct;
+use Indigo\Cart\Option\Tax as ParentTax;
 use SebastianBergmann\Money\Money;
-use Serializable;
+use InvalidArgumentException;
 
 /**
  * Tax option class
  *
- * Calculate tax based on price
+ * Uses Sebastian Bergmann's Money implementation
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Tax extends Struct implements OptionInterface, TaxInterface, Serializable
+class Tax extends ParentTax
 {
-    use \Indigo\Container\Helper\Id;
-    use \Indigo\Container\Helper\Serializable;
-
     /**
      * {@inheritdocs}
      */
@@ -47,8 +43,12 @@ class Tax extends Struct implements OptionInterface, TaxInterface, Serializable
     /**
      * {@inheritdocs}
      */
-    public function getValue(Money $price)
+    public function getValue($price)
     {
+        if ($price instanceof Money === false) {
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
+        }
+
         if ($this->value instanceof Money) {
             return $this->value;
         }

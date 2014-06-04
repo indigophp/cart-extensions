@@ -4,7 +4,6 @@ namespace Indigo\Cart\Test\Money;
 
 use Indigo\Cart\Money\Cart;
 use Indigo\Cart\Money\Item;
-use Indigo\Cart\Money\Option\Collection;
 use Indigo\Cart\Money\Option\Option;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
@@ -35,12 +34,10 @@ class CartTest extends \PHPUnit_Framework_TestCase
                 'name'     => 'Some Product',
                 'price'    => new Money(100, $this->currency),
                 'quantity' => 1,
-                'option'  => new Collection(array(
-                    new Option(array(
-                        'id'    => 1,
-                        'name'  => 'Test Option',
-                        'value' => new Money(100, $this->currency),
-                    )),
+                'option'  => new Option(array(
+                    'id'    => 1,
+                    'name'  => 'Test Option',
+                    'value' => new Money(100, $this->currency),
                 )),
             )
         );

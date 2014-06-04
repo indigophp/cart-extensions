@@ -11,9 +11,9 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo\Container\Struct;
+use Indigo\Cart\Option\Option as ParentOption;
 use SebastianBergmann\Money\Money;
-use Serializable;
+use InvalidArgumentException;
 
 /**
  * Money Cart Item Option class
@@ -22,11 +22,8 @@ use Serializable;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Option extends Struct implements OptionInterface, Serializable
+class Option extends ParentOption
 {
-    use \Indigo\Container\Helper\Id;
-    use \Indigo\Container\Helper\Serializable;
-
     /**
      * {@inheritdocs}
      */
@@ -43,11 +40,12 @@ class Option extends Struct implements OptionInterface, Serializable
         ),
     );
 
-    /**
-     * {@inheritdocs}
-     */
-    public function getValue(Money $price)
+    public function getValue($price)
     {
-        return $this->value;
+        if ($price instanceof Money === false) {
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
+        }
+
+        return parent::getValue($price);
     }
 }

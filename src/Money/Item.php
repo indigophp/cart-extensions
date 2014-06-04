@@ -11,8 +11,7 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo;
-use SebastianBergmann\Money\Money;
+use Indigo\Cart\Item as ParentItem;
 
 /**
  * Money Item class
@@ -21,7 +20,7 @@ use SebastianBergmann\Money\Money;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Item extends Indigo\Cart\Item
+class Item extends ParentItem
 {
     /**
      * {@inheritdocs}
@@ -45,7 +44,7 @@ class Item extends Indigo\Cart\Item
             'numericMin' => 1,
         ),
         'option' => array(
-            'type' => 'Indigo\\Cart\\Money\\Option\\OptionInterface'
+            'type' => 'Indigo\\Cart\\Option\\OptionInterface'
         ),
     );
 

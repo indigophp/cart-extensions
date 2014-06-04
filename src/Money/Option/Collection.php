@@ -11,64 +11,30 @@
 
 namespace Indigo\Cart\Money\Option;
 
+use Indigo\Cart\Option\Collection as ParentCollection;
 use Indigo\Container\Collection as CollectionContainer;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
-use Serializable;
+use InvalidArgumentException;
 
 /**
- * Option collection class
+ * Option Collection class
+ *
+ * Uses Sebastian Bergmann's Money implementation
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Collection extends CollectionContainer implements OptionInterface, Serializable
+class Collection extends ParentCollection
 {
-    use \Indigo\Container\Helper\Id;
-    use \Indigo\Container\Helper\Insert;
-    use \Indigo\Container\Helper\Serializable;
-
-    /**
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $data = array(), $readOnly = false)
-    {
-        parent::__construct(new Type('Indigo\\Cart\\Money\\Option\\OptionInterface'), array(), $readOnly);
-
-        foreach ($data as $value) {
-            $this->add($value);
-        }
-    }
-
-    /**
-     * Add option to collection
-     *
-     * @param  OptionInterface $option
-     * @param  int|null        $pos    Position to insert at
-     * @return Collection
-     */
-    public function add(OptionInterface $option, $pos = null)
-    {
-        $id = $option->getId();
-
-        if ($this->has($id) === false) {
-            // Set parent, but disable the usage
-            // Set option to read-only
-            $option
-                ->setParent($this)
-                ->disableParent()
-                ->setReadOnly();
-
-            $this->insertAssoc($id, $option, $pos);
-        }
-
-        return $this;
-    }
-
     /**
      * {@inheritdocs}
      */
-    public function getValue(Money $price)
+    public function getValue($price)
     {
+        if ($price instanceof Money === false) {
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
+        }
+
         $total = new Money(0, $price->getCurrency());
 
         foreach ($this->data as $option) {
@@ -87,8 +53,12 @@ class Collection extends CollectionContainer implements OptionInterface, Seriali
      * @param  boolean $filter If false, the given types will be filtered out
      * @return float
      */
-    public function getValueOfType(Money $price, Type $type, $filter = true)
+    public function getValueOfType($price, Type $type, $filter = true)
     {
+        if ($price instanceof Money === false) {
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
+        }
+
         $total = new Money(0, $price->getCurrency());
 
         foreach ($this->data as $option) {

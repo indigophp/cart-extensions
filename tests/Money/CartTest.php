@@ -60,49 +60,6 @@ class CartTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::add
-     * @group  Cart
-     */
-    public function testAdd()
-    {
-        $id = $this->item->getId();
-
-        $this->assertTrue($this->cart->has($id));
-
-        $this->cart->add($this->item);
-
-        $currentItem = $this->cart->get($id);
-
-        $this->assertEquals(2, $currentItem->quantity);
-    }
-
-    /**
-     * @covers            ::add
-     * @expectedException SebastianBergmann\Money\CurrencyMismatchException
-     * @group             Cart
-     */
-    public function testAddCurrencyFailure()
-    {
-        $this->item->setReadOnly(false);
-        $this->item->price = new Money(100, new Currency('USD'));
-
-        $this->cart->add($this->item);
-    }
-
-    /**
-     * @covers ::add
-     * @group  Cart
-     */
-    public function testAddNoCurrency()
-    {
-        $cart = new Cart('cart_01');
-
-        $cart->add($this->item);
-
-        $this->assertSame($this->currency, $cart->getCurrency());
-    }
-
-    /**
      * @covers ::getTotal
      * @group  Cart
      */

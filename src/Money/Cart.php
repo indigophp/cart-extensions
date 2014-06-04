@@ -74,26 +74,6 @@ class Cart extends Indigo\Cart\Cart
     /**
      * {@inheritdocs}
      *
-     * @throws CurrencyMismatchException
-     */
-    public function add(ItemInterface $item)
-    {
-        $this->validateOne($item);
-
-        $currency = $item['price']->getCurrency();
-
-        if (isset($this->currency) === false) {
-            $this->currency = $currency;
-        } elseif ($this->currency != $currency) {
-            throw new CurrencyMismatchException;
-        }
-
-        return parent::add($item);
-    }
-
-    /**
-     * {@inheritdocs}
-     *
      * @return Money
      */
     public function getTotal($options = false)

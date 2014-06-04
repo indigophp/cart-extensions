@@ -78,20 +78,6 @@ class CartTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers            ::add
-     * @expectedException InvalidArgumentException
-     * @group             Cart
-     */
-    public function testAddFailure()
-    {
-        $item = $this->item->getContents();
-        $item['price'] = 1.0;
-        $item = new \Indigo\Cart\Item($item);
-
-        $this->cart->add($item);
-    }
-
-    /**
-     * @covers            ::add
      * @expectedException SebastianBergmann\Money\CurrencyMismatchException
      * @group             Cart
      */

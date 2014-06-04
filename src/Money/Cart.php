@@ -78,9 +78,7 @@ class Cart extends \Indigo\Cart\Cart
      */
     public function add(ItemInterface $item)
     {
-        if ($item instanceof Item === false) {
-            throw new InvalidArgumentException('$item should be an instance of Indigo\\Cart\\Money\\Item');
-        }
+        $this->validateOne($item);
 
         $currency = $item['price']->getCurrency();
 

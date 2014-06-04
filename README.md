@@ -1,9 +1,9 @@
 # Indigo Cart Extensions
 
-[![Build Status](https://travis-ci.org/indigophp/cart-extensions.svg?branch=develop)](https://travis-ci.org/indigophp/cart)
-[![Latest Stable Version](https://poser.pugx.org/indigophp/cart-extensions/v/stable.png)](https://packagist.org/packages/indigophp/cart)
-[![Total Downloads](https://poser.pugx.org/indigophp/cart-extensions/downloads.png)](https://packagist.org/packages/indigophp/cart)
-[![License](https://poser.pugx.org/indigophp/cart-extensions/license.png)](https://packagist.org/packages/indigophp/cart)
+[![Build Status](https://travis-ci.org/indigophp/cart-extensions.svg?branch=develop)](https://travis-ci.org/indigophp/cart-extensions)
+[![Latest Stable Version](https://poser.pugx.org/indigophp/cart-extensions/v/stable.png)](https://packagist.org/packages/indigophp/cart-extensions)
+[![Total Downloads](https://poser.pugx.org/indigophp/cart-extensions/downloads.png)](https://packagist.org/packages/indigophp/cart-extensions)
+[![License](https://poser.pugx.org/indigophp/cart-extensions/license.png)](https://packagist.org/packages/indigophp/cart-extensions)
 
 **Indigo Cart Extensions is an extension of Indigo Cart abstraction.**
 

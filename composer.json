@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "indigophp/cart": "dev-develop"
+        "indigophp/cart": "~1.0.0"
     },
     "require-dev": {
         "codeception/codeception": "~2.0.0",

@@ -1,11 +1,8 @@
 <?php
 
-namespace Indigo\Cart\Test\Money\Option;
+namespace Indigo\Cart\Money\Option;
 
 use Indigo\Cart\Money\Item;
-use Indigo\Cart\Money\Option\Collection;
-use Indigo\Cart\Money\Option\Option;
-use Indigo\Cart\Money\Option\Tax;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
@@ -21,7 +18,7 @@ class CollectionTest extends AbstractOptionTest
 {
     protected $mock;
 
-    protected function setUp()
+    protected function _before()
     {
         $this->option = new Collection;
 

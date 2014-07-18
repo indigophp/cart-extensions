@@ -1,21 +1,22 @@
 <?php
 
-namespace Indigo\Cart\Test\Money;
+namespace Indigo\Cart\Money;
 
 use Indigo\Cart\Money\Cart;
 use Indigo\Cart\Money\Item;
 use Indigo\Cart\Money\Option\Option;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
+use Codeception\TestCase\Test;
 
 /**
  * Tests for Cart
  *
- * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
- * @coversDefaultClass  Indigo\Cart\Money\Cart
+ * @coversDefaultClass Indigo\Cart\Money\Cart
  */
-class CartTest extends \PHPUnit_Framework_TestCase
+class CartTest extends Test
 {
     protected $cart;
 
@@ -23,7 +24,7 @@ class CartTest extends \PHPUnit_Framework_TestCase
 
     protected $currency;
 
-    protected function setUp()
+    protected function _before()
     {
         $this->currency = new Currency('EUR');
         $this->cart = new Cart($this->currency, 'cart_01');
@@ -43,6 +44,18 @@ class CartTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->cart->add($this->item);
+    }
+
+    /**
+     * @covers ::__construct
+     * @group  Cart
+     */
+    public function testConstruct()
+    {
+        $cart = new Cart($this->currency, 'cart_01');
+
+        $this->assertEquals('cart_01', $cart->getId());
+        $this->assertEquals($this->currency, $cart->getCurrency());
     }
 
     /**

@@ -1,10 +1,12 @@
 <?php
 
-namespace Indigo\Cart\Test\Money\Option;
+namespace Indigo\Cart\Money\Option;
+
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
+use Codeception\TestCase\Test;
 
-abstract class AbstractOptionTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractOptionTest extends Test
 {
     /**
      * @var OptionInterface

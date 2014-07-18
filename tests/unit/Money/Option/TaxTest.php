@@ -1,8 +1,7 @@
 <?php
 
-namespace Indigo\Cart\Test\Money\Option;
+namespace Indigo\Cart\Money\Option;
 
-use Indigo\Cart\Money\Option\Tax;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
 
@@ -15,7 +14,7 @@ use SebastianBergmann\Money\Currency;
  */
 class TaxTest extends AbstractOptionTest
 {
-    public function setUp()
+    public function _before()
     {
         $this->option = new Tax(array(
             'id'    => 1,

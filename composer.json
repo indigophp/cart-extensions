@@ -14,21 +14,18 @@
         "php": ">=5.4.0",
         "indigophp/cart": "dev-develop"
     },
+    "require-dev": {
+        "codeception/codeception": "~2.0.0",
+        "sebastian/money": "dev-master"
+    },
     "suggest": {
         "sebastian/money": "Value Object that represents a monetary value using a currency's smallest unit."
-    },
-    "require-dev": {
-        "sebastian/money": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "Indigo\\Cart\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Indigo\\Cart\\Test\\": "tests/"
-        }
-    },
+    "prefer-stable": true,
     "minimum-stability": "dev"
 }

@@ -11,51 +11,28 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo;
+use Indigo\Cart\Option\Collection as ParentCollection;
 use Indigo\Container\Collection as CollectionContainer;
-use Indigo\Cart\Option\OptionInterface as OriginalOptionInterface;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use InvalidArgumentException;
 
 /**
- * Option collection class
+ * Option Collection class
+ *
+ * Uses Sebastian Bergmann's Money implementation
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Collection extends Indigo\Cart\Option\Collection implements OptionInterface
+class Collection extends ParentCollection
 {
-    /**
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $data = array(), $readOnly = false)
-    {
-        CollectionContainer::__construct(new Type('Indigo\\Cart\\Money\\Option\\OptionInterface'), array(), $readOnly);
-
-        foreach ($data as $value) {
-            $this->add($value);
-        }
-    }
-
-    /**
-     * {@inheritdocs}
-     */
-    public function add(OriginalOptionInterface $option, $pos = null)
-    {
-        if ($option instanceof OptionInterface === false) {
-            throw new InvalidArgumentException('$option should be an instance of Indigo\\Cart\\Money\\Option\\OptionInterface');
-        }
-
-        return parent::add($option, $pos);
-    }
-
     /**
      * {@inheritdocs}
      */
     public function getValue($price)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         $total = new Money(0, $price->getCurrency());
@@ -71,15 +48,16 @@ class Collection extends Indigo\Cart\Option\Collection implements OptionInterfac
     }
 
     /**
-     * Get value of type
+     * Returns the value of type
      *
-     * @param  boolean $filter If false, the given types will be filtered out
-     * @return float
+     * @param boolean $filter If false, the given types will be filtered out
+     *
+     * @return Money
      */
     public function getValueOfType($price, Type $type, $filter = true)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         $total = new Money(0, $price->getCurrency());

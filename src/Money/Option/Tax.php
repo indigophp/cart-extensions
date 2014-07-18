@@ -11,34 +11,34 @@
 
 namespace Indigo\Cart\Money\Option;
 
-use Indigo;
+use Indigo\Cart\Option\Tax as ParentTax;
 use SebastianBergmann\Money\Money;
 use InvalidArgumentException;
 
 /**
  * Tax option class
  *
- * Calculate tax based on price
+ * Uses Sebastian Bergmann's Money implementation
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Tax extends Indigo\Cart\Option\Tax implements OptionInterface
+class Tax extends ParentTax
 {
     /**
      * {@inheritdocs}
      */
-    protected $struct = array(
-        'id' => array(
-            'type' => array('integer', 'string')
-        ),
-        'name' => array(
+    protected $struct = [
+        'id' => [
+            'type' => ['integer', 'string'],
+        ],
+        'name' => [
             'required',
             'type' => 'string',
-        ),
-        'value' => array(
-            'type' => array('SebastianBergmann\\Money\\Money', 'numeric')
-        ),
-    );
+        ],
+        'value' => [
+            'type' => ['SebastianBergmann\\Money\\Money', 'numeric'],
+        ],
+    ];
 
     /**
      * {@inheritdocs}
@@ -46,7 +46,7 @@ class Tax extends Indigo\Cart\Option\Tax implements OptionInterface
     public function getValue($price)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('$price should be an instance of SebastianBergmann\\Money\\Money');
+            throw new InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         if ($this->value instanceof Money) {

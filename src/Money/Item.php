@@ -11,8 +11,7 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo;
-use SebastianBergmann\Money\Money;
+use Indigo\Cart\Item as ParentItem;
 
 /**
  * Money Item class
@@ -21,33 +20,33 @@ use SebastianBergmann\Money\Money;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Item extends Indigo\Cart\Item
+class Item extends ParentItem
 {
     /**
      * {@inheritdocs}
      */
-    protected $struct = array(
-        'id' => array(
+    protected $struct = [
+        'id' => [
             'required',
-            'type' => array('integer', 'string'),
-        ),
-        'name' => array(
+            'type' => ['integer', 'string'],
+        ],
+        'name' => [
             'required',
             'type' => 'string',
-        ),
-        'price' => array(
+        ],
+        'price' => [
             'required',
             'type' => 'SebastianBergmann\\Money\\Money',
-        ),
-        'quantity' => array(
+        ],
+        'quantity' => [
             'required',
             'type'       => 'integer',
             'numericMin' => 1,
-        ),
-        'option' => array(
-            'type' => 'Indigo\\Cart\\Money\\Option\\OptionInterface'
-        ),
-    );
+        ],
+        'option' => [
+            'type' => 'Indigo\\Cart\\Option\\OptionInterface',
+        ],
+    ];
 
     /**
      * {@inheritdocs}
@@ -58,7 +57,7 @@ class Item extends Indigo\Cart\Item
     {
         $price = $this->price;
 
-        if ($option and isset($this->data['option'])) {
+        if ($option and isset($this->option)) {
             $option = $this->option->getValue($price);
 
             $price = $price->add($option);

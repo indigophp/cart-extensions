@@ -11,13 +11,11 @@
 
 namespace Indigo\Cart\Money;
 
-use Indigo\Cart\ItemInterface;
+use Indigo\Cart\Cart as ParentCart;
 use Indigo\Container\Collection;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
-use SebastianBergmann\Money\CurrencyMismatchException;
-use InvalidArgumentException;
 
 /**
  * Money Cart class
@@ -26,7 +24,7 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Cart extends \Indigo\Cart\Cart
+class Cart extends ParentCart
 {
     /**
      * Currency of cart
@@ -38,9 +36,12 @@ class Cart extends \Indigo\Cart\Cart
     protected $currency;
 
     /**
-     * @codeCoverageIgnore
+     * Creates a new Money Cart
+     *
+     * @param Currency $currency
+     * @param mixed    $id
      */
-    public function __construct($id = null, Currency $currency = null)
+    public function __construct(Currency $currency, $id = null)
     {
         $this->id = $id;
         $this->currency = $currency;
@@ -49,48 +50,13 @@ class Cart extends \Indigo\Cart\Cart
     }
 
     /**
-     * Get Currency
+     * Returns the Currency
      *
      * @return Currency
      */
     public function getCurrency()
     {
         return $this->currency;
-    }
-
-    /**
-     * Set Currency
-     *
-     * @param  Currency $currency
-     * @return Cart
-     */
-    public function setCurrency(Currency $currency)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdocs}
-     *
-     * @throws CurrencyMismatchException
-     */
-    public function add(ItemInterface $item)
-    {
-        if ($item instanceof Item === false) {
-            throw new InvalidArgumentException('$item should be an instance of Indigo\\Cart\\Money\\Item');
-        }
-
-        $currency = $item['price']->getCurrency();
-
-        if (isset($this->currency) === false) {
-            $this->currency = $currency;
-        } elseif ($this->currency != $currency) {
-            throw new CurrencyMismatchException;
-        }
-
-        return parent::add($item);
     }
 
     /**

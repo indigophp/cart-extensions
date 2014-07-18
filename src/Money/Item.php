@@ -23,7 +23,7 @@ use Indigo\Cart\Item as ParentItem;
 class Item extends ParentItem
 {
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     protected $struct = [
         'id' => [
@@ -49,7 +49,7 @@ class Item extends ParentItem
     ];
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      *
      * @return Money
      */
@@ -67,7 +67,7 @@ class Item extends ParentItem
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      *
      * @return Money
      */

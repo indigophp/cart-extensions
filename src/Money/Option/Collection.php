@@ -27,7 +27,7 @@ use InvalidArgumentException;
 class Collection extends ParentCollection
 {
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function getValue($price)
     {

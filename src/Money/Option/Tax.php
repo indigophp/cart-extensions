@@ -25,7 +25,7 @@ use InvalidArgumentException;
 class Tax extends ParentTax
 {
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     protected $struct = [
         'id' => [
@@ -41,7 +41,7 @@ class Tax extends ParentTax
     ];
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function getValue($price)
     {

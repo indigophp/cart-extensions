@@ -25,7 +25,7 @@ use InvalidArgumentException;
 class Option extends ParentOption
 {
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     protected $struct = [
         'id' => [
@@ -41,7 +41,7 @@ class Option extends ParentOption
     ];
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function getValue($price)
     {

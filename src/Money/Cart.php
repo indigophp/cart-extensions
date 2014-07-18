@@ -60,7 +60,7 @@ class Cart extends ParentCart
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      *
      * @return Money
      */

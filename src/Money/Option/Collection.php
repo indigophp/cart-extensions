@@ -48,10 +48,11 @@ class Collection extends ParentCollection
     }
 
     /**
-     * Get value of type
+     * Returns the value of type
      *
-     * @param  boolean $filter If false, the given types will be filtered out
-     * @return float
+     * @param boolean $filter If false, the given types will be filtered out
+     *
+     * @return Money
      */
     public function getValueOfType($price, Type $type, $filter = true)
     {

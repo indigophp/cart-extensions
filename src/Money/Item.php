@@ -25,28 +25,28 @@ class Item extends ParentItem
     /**
      * {@inheritdocs}
      */
-    protected $struct = array(
-        'id' => array(
+    protected $struct = [
+        'id' => [
             'required',
-            'type' => array('integer', 'string'),
-        ),
-        'name' => array(
+            'type' => ['integer', 'string'],
+        ],
+        'name' => [
             'required',
             'type' => 'string',
-        ),
-        'price' => array(
+        ],
+        'price' => [
             'required',
             'type' => 'SebastianBergmann\\Money\\Money',
-        ),
-        'quantity' => array(
+        ],
+        'quantity' => [
             'required',
             'type'       => 'integer',
             'numericMin' => 1,
-        ),
-        'option' => array(
-            'type' => 'Indigo\\Cart\\Option\\OptionInterface'
-        ),
-    );
+        ],
+        'option' => [
+            'type' => 'Indigo\\Cart\\Option\\OptionInterface',
+        ],
+    ];
 
     /**
      * {@inheritdocs}

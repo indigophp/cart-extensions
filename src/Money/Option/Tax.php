@@ -27,18 +27,18 @@ class Tax extends ParentTax
     /**
      * {@inheritdocs}
      */
-    protected $struct = array(
-        'id' => array(
-            'type' => array('integer', 'string')
-        ),
-        'name' => array(
+    protected $struct = [
+        'id' => [
+            'type' => ['integer', 'string'],
+        ],
+        'name' => [
             'required',
             'type' => 'string',
-        ),
-        'value' => array(
-            'type' => array('SebastianBergmann\\Money\\Money', 'numeric')
-        ),
-    );
+        ],
+        'value' => [
+            'type' => ['SebastianBergmann\\Money\\Money', 'numeric'],
+        ],
+    ];
 
     /**
      * {@inheritdocs}

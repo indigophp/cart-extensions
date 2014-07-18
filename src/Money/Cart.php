@@ -36,7 +36,10 @@ class Cart extends ParentCart
     protected $currency;
 
     /**
-     * @codeCoverageIgnore
+     * Creates a new Money Cart
+     *
+     * @param Currency $currency
+     * @param mixed    $id
      */
     public function __construct(Currency $currency, $id = null)
     {
@@ -47,7 +50,7 @@ class Cart extends ParentCart
     }
 
     /**
-     * Get Currency
+     * Returns the Currency
      *
      * @return Currency
      */

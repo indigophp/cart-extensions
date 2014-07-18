@@ -27,19 +27,22 @@ class Option extends ParentOption
     /**
      * {@inheritdocs}
      */
-    protected $struct = array(
-        'id' => array(
-            'type' => array('integer', 'string')
-        ),
-        'name' => array(
+    protected $struct = [
+        'id' => [
+            'type' => ['integer', 'string'],
+        ],
+        'name' => [
             'required',
             'type' => 'string',
-        ),
-        'value' => array(
-            'type' => 'SebastianBergmann\\Money\\Money'
-        ),
-    );
+        ],
+        'value' => [
+            'type' => 'SebastianBergmann\\Money\\Money',
+        ],
+    ];
 
+    /**
+     * {@inheritdocs}
+     */
     public function getValue($price)
     {
         if ($price instanceof Money === false) {

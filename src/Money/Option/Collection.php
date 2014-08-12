@@ -15,10 +15,9 @@ use Indigo\Cart\Option\Collection as ParentCollection;
 use Indigo\Container\Collection as CollectionContainer;
 use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
-use InvalidArgumentException;
 
 /**
- * Option Collection class
+ * Collection Option
  *
  * Uses Sebastian Bergmann's Money implementation
  *
@@ -32,7 +31,7 @@ class Collection extends ParentCollection
     public function getValue($price)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('The given value is not a valid Money object.');
+            throw new \InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         $total = new Money(0, $price->getCurrency());
@@ -57,7 +56,7 @@ class Collection extends ParentCollection
     public function getValueOfType($price, Type $type, $filter = true)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('The given value is not a valid Money object.');
+            throw new \InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         $total = new Money(0, $price->getCurrency());

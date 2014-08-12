@@ -13,10 +13,9 @@ namespace Indigo\Cart\Money\Option;
 
 use Indigo\Cart\Option\Option as ParentOption;
 use SebastianBergmann\Money\Money;
-use InvalidArgumentException;
 
 /**
- * Money Cart Item Option class
+ * Option
  *
  * Uses Sebastian Bergmann's Money implementation
  *
@@ -46,7 +45,7 @@ class Option extends ParentOption
     public function getValue($price)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('The given value is not a valid Money object.');
+            throw new \InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         return parent::getValue($price);

@@ -13,7 +13,6 @@ namespace Indigo\Cart\Money\Option;
 
 use Indigo\Cart\Option\Tax as ParentTax;
 use SebastianBergmann\Money\Money;
-use InvalidArgumentException;
 
 /**
  * Tax option class
@@ -46,7 +45,7 @@ class Tax extends ParentTax
     public function getValue($price)
     {
         if ($price instanceof Money === false) {
-            throw new InvalidArgumentException('The given value is not a valid Money object.');
+            throw new \InvalidArgumentException('The given value is not a valid Money object.');
         }
 
         if ($this->value instanceof Money) {

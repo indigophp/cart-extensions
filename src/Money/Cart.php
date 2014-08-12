@@ -18,7 +18,7 @@ use SebastianBergmann\Money\Money;
 use SebastianBergmann\Money\Currency;
 
 /**
- * Money Cart class
+ * Money Cart
  *
  * Uses Sebastian Bergmann's Money implementation
  *

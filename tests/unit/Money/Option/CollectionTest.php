@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Indigo Cart Extensions package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Indigo\Cart\Money\Option;
 
 use Indigo\Cart\Money\Item;
@@ -13,6 +22,9 @@ use SebastianBergmann\Money\Currency;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Cart\Money\Option\Collection
+ * @group              Cart
+ * @group              Money
+ * @group              Option
  */
 class CollectionTest extends AbstractOptionTest
 {
@@ -33,7 +45,6 @@ class CollectionTest extends AbstractOptionTest
 
     /**
      * @covers ::getValueOfType
-     * @group  Cart
      */
     public function testValueOfType()
     {
@@ -43,7 +54,6 @@ class CollectionTest extends AbstractOptionTest
     /**
      * @covers            ::getValueOfType
      * @expectedException InvalidArgumentException
-     * @group             Cart
      */
     public function testValueOfTypeFailure()
     {

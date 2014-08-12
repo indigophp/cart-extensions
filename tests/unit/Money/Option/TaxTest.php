@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Indigo Cart Extensions package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Indigo\Cart\Money\Option;
 
 use SebastianBergmann\Money\Money;
@@ -11,6 +20,9 @@ use SebastianBergmann\Money\Currency;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Cart\Money\Option\Tax
+ * @group              Cart
+ * @group              Money
+ * @group              Option
  */
 class TaxTest extends AbstractOptionTest
 {
@@ -25,7 +37,6 @@ class TaxTest extends AbstractOptionTest
 
     /**
      * @covers ::getValue
-     * @group  Cart
      */
     public function testValueMultiply()
     {

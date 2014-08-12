@@ -15,7 +15,7 @@ use Indigo\Cart\Option\Option as ParentOption;
 use SebastianBergmann\Money\Money;
 
 /**
- * Option
+ * Money Option
  *
  * Uses Sebastian Bergmann's Money implementation
  *

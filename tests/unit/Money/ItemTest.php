@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Indigo Cart Extensions package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Indigo\Cart\Money;
 
 use Indigo\Cart\Money\Option\Option;
@@ -13,6 +22,8 @@ use Codeception\TestCase\Test;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Cart\Money\Item
+ * @group              Cart
+ * @group              Money
  */
 class ItemTest extends Test
 {
@@ -20,7 +31,7 @@ class ItemTest extends Test
 
     protected $currency;
 
-    protected function setUp()
+    protected function _before()
     {
         $this->currency = new Currency('EUR');
 
@@ -39,7 +50,6 @@ class ItemTest extends Test
 
     /**
      * @covers ::getPrice
-     * @group  Cart
      */
     public function testPrice()
     {
@@ -50,7 +60,6 @@ class ItemTest extends Test
     /**
      * @covers ::getSubtotal
      * @covers ::getPrice
-     * @group  Cart
      */
     public function testSubtotal()
     {

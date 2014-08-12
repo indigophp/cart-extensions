@@ -15,7 +15,7 @@ use Indigo\Cart\Option\Tax as ParentTax;
 use SebastianBergmann\Money\Money;
 
 /**
- * Tax option class
+ * Money Tax
  *
  * Uses Sebastian Bergmann's Money implementation
  *

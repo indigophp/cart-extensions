@@ -17,7 +17,7 @@ use Fuel\Validation\Rule\Type;
 use SebastianBergmann\Money\Money;
 
 /**
- * Collection Option
+ * Money Collection
  *
  * Uses Sebastian Bergmann's Money implementation
  *

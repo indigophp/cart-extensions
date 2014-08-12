@@ -14,7 +14,7 @@ namespace Indigo\Cart\Money;
 use Indigo\Cart\Item as ParentItem;
 
 /**
- * Money Item class
+ * Money Item
  *
  * Uses Sebastian Bergmann's Money implementation
  *

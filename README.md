@@ -1,11 +1,11 @@
 # Indigo Cart Extensions
 
-[![Build Status](https://travis-ci.org/indigophp/cart-extensions.svg?branch=develop)](https://travis-ci.org/indigophp/cart-extensions)
-[![Code Coverage](https://scrutinizer-ci.com/g/indigophp/cart-extensions/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/indigophp/cart-extensions/?branch=develop)
-[![Latest Stable Version](https://poser.pugx.org/indigophp/cart-extensions/v/stable.png)](https://packagist.org/packages/indigophp/cart-extensions)
-[![Total Downloads](https://poser.pugx.org/indigophp/cart-extensions/downloads.png)](https://packagist.org/packages/indigophp/cart-extensions)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/indigophp/cart-extensions/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/indigophp/cart-extensions/?branch=develop)
-[![License](https://poser.pugx.org/indigophp/cart-extensions/license.png)](https://packagist.org/packages/indigophp/cart-extensions)
+[![Build Status](https://img.shields.io/travis/indigophp/cart-extensions/develop.svg?style=flat-square)](https://travis-ci.org/indigophp/cart-extensions)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/indigophp/cart-extensions.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/cart-extensions)
+[![Packagist Version](https://img.shields.io/packagist/v/indigophp/cart-extensions.svg?style=flat-square)](https://packagist.org/packages/indigophp/cart-extensions)
+[![Total Downloads](https://img.shields.io/packagist/dt/indigophp/cart-extensions.svg?style=flat-square)](https://packagist.org/packages/indigophp/cart-extensions)
+[![Quality Score](https://img.shields.io/scrutinizer/g/indigophp/cart-extensions.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/cart-extensions)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Dependency Status](https://www.versioneye.com/user/projects/53c95da7c275671b4100002b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53c95da7c275671b4100002b)
 
 **Indigo Cart Extensions is an extension of Indigo Cart abstraction.**
@@ -26,13 +26,13 @@ Via Composer
 
 ## Usage
 
-This package includes specific implementations of Indigo Cart which is only an abstraction layer. Any implementations (`Store`s, `Option`s, etc) should be commited to this package.
+This package includes specific implementations of Indigo Cart which is only an abstraction layer. Any implementations (`Store`s, etc) should be commited to this package.
 
 
 ## Testing
 
 ``` bash
-$ codecept run
+$ phpspec run
 ```
 
 

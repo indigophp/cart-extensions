@@ -1,3 +1,5 @@
-composer.lock
+/bin
+/build
 /vendor
-/tests/_output
+composer.lock
+phpspec.yml

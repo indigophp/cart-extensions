@@ -15,16 +15,26 @@
         "indigophp/cart": "dev-develop"
     },
     "require-dev": {
-        "codeception/codeception": "~2.0.0",
-        "sebastian/money": "dev-master"
+        "mathiasverraes/money": "dev-nextrelease",
+        "fuelphp/session": "dev-master",
+        "phpspec/phpspec": "~2.0",
+        "henrikbjorn/phpspec-code-coverage" : "1.0.*@dev"
     },
     "suggest": {
-        "sebastian/money": "Value Object that represents a monetary value using a currency's smallest unit."
+        "fuelphp/session": "FuelPHP Session management"
     },
     "autoload": {
         "psr-4": {
             "Indigo\\Cart\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Cart\\Stub\\": "stub/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "prefer-stable": true,
     "minimum-stability": "dev"

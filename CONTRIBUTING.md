@@ -61,7 +61,7 @@ By making a contribution to this project, I certify that:
 ## Testing
 
 ``` bash
-$ codecept run
+$ phpspec run
 ```
 
 
